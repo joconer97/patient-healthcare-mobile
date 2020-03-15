@@ -16,7 +16,7 @@ export class CheckupPage implements OnInit {
   }
   ngOnInit() { 
 
-    this.checkupService.getCheckup();
+    this.checkup = this.checkupService.getCheckup();
   }
 
 
