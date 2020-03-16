@@ -1,20 +1,26 @@
-?xml version="1.0" encoding="UTF-8" ?>
-<widget xmlns   = "http://www.w3.org/ns/widgets"
-    xmlns:gap   = "http://phonegap.com/ns/1.0"
-    id          = "com.phonegap.example"
-    versionCode = "10"
-    version     = "1.0.0" >
+<widget id="io.cordova.hellocordova" 
+version="0.0.1" 
+android-versionCode="13" 
+xmlns="http://www.w3.org/ns/widgets" 
+xmlns:cdv="http://cordova.apache.org/ns/1.0">
 
-<!-- versionCode is optional and Android only -->
+    <name>SampleApp</name>
+    <description>A sample Apache Cordova application</description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io"></author>
+    <content src="index.html"></content>
+    <engine name="android" spec="https://github.com/apache/cordova-android.git#5.1.1" />
+    <plugin name="cordova-plugin-device" spec="^1.1.0" />
 
-    <name>Sample</name>
-    <content src="index.html"/>
-    <description>
-        An example for phonegap build docs.
-    </description>
-
-    <author href="https://build.phonegap.com" email="arneljoshua.payongayon@unc.edu.ph">
-        Hardeep Shoker
-    </author>
+    <preference name="KeepRunning" value="false"/>
+    <preference name="LoadUrlTimeoutValue" value="10000"/>
+    <preference name="InAppBrowserStorageEnabled" value="true"/>
+    <preference name="LoadingDialog" value="My Title,My Message"/>
+    <preference name="ErrorUrl" value="myErrorPage.html"/>
+    <preference name="ShowTitle" value="true"/>
+    <preference name="LogLevel" value="VERBOSE"/>
+    <preference name="AndroidLaunchMode" value="singleTop"/>
+    <preference name="DefaultVolumeStream" value="call" />
+    <preference name="OverrideUserAgent" value="Mozilla/5.0 My Browser" />
+    <preference name="AppendUserAgent" value="My Browser" />
 
 </widget>
