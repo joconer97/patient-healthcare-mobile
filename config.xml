@@ -10,7 +10,7 @@ xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <content src="/src/index.html"></content>
     <engine name="android" spec="https://github.com/apache/cordova-android.git#5.1.1" />
     <plugin name="cordova-plugin-device" spec="^1.1.0" />
-
+    <preference name="android-minSdkVersion" value="17" />
     <preference name="KeepRunning" value="false"/>
     <preference name="LoadUrlTimeoutValue" value="10000"/>
     <preference name="InAppBrowserStorageEnabled" value="true"/>
