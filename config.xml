@@ -7,7 +7,7 @@ xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>SampleApp</name>
     <description>A sample Apache Cordova application</description>
     <author email="dev@cordova.apache.org" href="http://cordova.io"></author>
-    <content src="index.html"></content>
+    <content src="/src/index.html"></content>
     <engine name="android" spec="https://github.com/apache/cordova-android.git#5.1.1" />
     <plugin name="cordova-plugin-device" spec="^1.1.0" />
 
