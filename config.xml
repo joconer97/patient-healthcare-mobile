@@ -8,7 +8,7 @@
 <!-- versionCode is optional and Android only -->
 
     <name>Sample</name>
-
+    <content src="index.html"/>
     <description>
         An example for phonegap build docs.
     </description>
