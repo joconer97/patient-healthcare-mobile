@@ -11,13 +11,16 @@ import {AngularFireDatabase} from 'angularfire2/database';
 export class CheckupPage implements OnInit {
 
   checkup: Checkup[];
+  patientCheckup: Checkup[];
 
-  constructor(private checkupService: CheckupService){ 
+  constructor(private checkupService: CheckupService) { 
   }
-  ngOnInit() { 
 
+  ngOnInit() { 
     this.checkup = this.checkupService.getCheckup();
   }
+
+
 
 
 }

@@ -5,8 +5,21 @@ import { map } from 'rxjs/operators';
 import {AngularFireDatabase} from 'angularfire2/database';
 
 
-export interface Checkup{
-  name : string;
+export interface Checkup {
+  assesment: string;
+  blood_pressure: string;
+  cc: string;
+  date: Date;
+  gcs: string;
+  id: number;
+  isTreated: number;
+  management: string;
+  o2sat: string;
+  patientID: string;
+  pulse_rate: string;
+  respiratory_rate: string;
+  temperature: string;
+  time_arrived: string;
 }
 
 @Injectable({
@@ -16,19 +29,21 @@ export interface Checkup{
 
 
 export class CheckupService {
-  sample: any[] = [];
+  sample: Checkup[] = [];
 
   constructor(db: AngularFireDatabase) { 
-      db.list('/checkup').valueChanges().subscribe(res => {
+      db.list<Checkup>('/Checkup').valueChanges().subscribe(res => {
           res.forEach(r => {
-            this.sample.push(r);
+            if(r.patientID === '452103172020')
+            {
+                this.sample.push(r);
+            }
           })
       })
   }
 
   getCheckup()
   {
-    console.log(this.sample);
     return this.sample;
   }
 

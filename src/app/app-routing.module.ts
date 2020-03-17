@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
-    path: 'member',
+    path: 'member/:id',
     loadChildren: () => import('./member/member.module').then( m => m.MemberPageModule)
   },
   {
@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'checkup-summary/:id',
     loadChildren: () => import('./checkup-summary/checkup-summary.module').then( m => m.CheckupSummaryPageModule)
+  },
+  {
+    path: 'medicine',
+    loadChildren: () => import('./medicine/medicine.module').then( m => m.MedicinePageModule)
   },
 ];
 

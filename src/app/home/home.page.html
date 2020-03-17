@@ -16,14 +16,14 @@
   <ion-content fullscreen>
       <ion-item>
         <ion-label position="stacked">Patient Identification No.<ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+        <ion-input required type="text"  [(ngModel)]="patientID"></ion-input>
       </ion-item>
 
       <div class="ion-padding">
-        <ion-button expand="block" type="submit" class="ion-no-margin" href="/member">Login</ion-button>
+        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="login()">Login</ion-button>
       </div>
 
       <div class="ion-padding">
-        <ion-button expand="block" type="submit" class="ion-no-margin">Login as Guest</ion-button>
+        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="sample()">Login as Guest</ion-button>
       </div>
   </ion-content>

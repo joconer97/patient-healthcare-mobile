@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>medicine</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let m of medicines">
+    <ion-item>
+      <ion-label>{{m.name}}</ion-label>
+    </ion-item>
+  
+    <ion-card-content>
+      <ion-label>Price : ₱{{m.price}} </ion-label>
+      <ion-label>Stocks : {{m.quantity}} </ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

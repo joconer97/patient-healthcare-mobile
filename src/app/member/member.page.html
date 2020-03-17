@@ -9,10 +9,11 @@
   <ion-menu side="start" menuId="first" contentId="content1">
       <ion-header>
         <ion-toolbar>
-          <ion-title>Navigate</ion-title>
+          <ion-title>Menu</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content>
+        <h5>Patient Name:<ion-label>{{patient.firstname}}</ion-label></h5>
         <ion-list *ngFor="let pages of navigate">
         <ion-menu-toggle auto-hide="true">
           <ion-item [routerLink]="pages.url" routerDirection="forward">
