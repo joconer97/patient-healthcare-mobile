@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientService, Patient} from '../Services/patient.service';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  constructor(private patientService: PatientService, private router: Router) {}
+  constructor(private patientService: PatientService, private router: Router,public alertController: AlertController) {}
 
   patient: Patient[];
   currentPatient: Patient;
@@ -17,8 +18,26 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
+  async failedLoginAlert(){
+    const alert = await this.alertController.create({
+      header: 'Patient Healtcare',
+      subHeader: 'Failed to login',
+      message: 'Please check your Patient Identification Card',
+      buttons: ['OK']
+    })
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+  }
+
   login(){
     this.currentPatient = this.patientService.validatePatient(this.patientID);
+
+    if(this.currentPatient == null){
+      this.failedLoginAlert();
+      return;
+    }
+    
     this.router.navigate([`member/${this.currentPatient.id}`]);
   }
 

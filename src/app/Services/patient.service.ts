@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 
 export interface Patient {
-id: string;
+  id: string;
 }
 
 
@@ -15,36 +15,32 @@ id: string;
 
 export class PatientService {
 
-  patient: Patient[] = [];
+  patient:  any[] = [];
 
-  constructor(db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase){
       db.list<Patient>('/Patient').valueChanges().subscribe(res => {
-        this.patient = res;
-    })
+          this.patient = res;
+      });
   }
-  
-  validatePatient(patientID: string)
-  {
-    let temp = null;
+  validatePatient(patientID: string) {
+      let temp = null;
+      this.patient.some(p => {
+        if(p.id === patientID){
+            temp = p;
+        }
+        return true;
+      })
 
-    this.patient.some(p => {
-      if(p.id === patientID)
-      {
-        temp = p;
-      }
-    })
-    return temp;
+      return temp;
   }
 
-  getPatient(patientID: string)
-  {
+  getPatient(patientID: string){
     let temp = null;
-
     this.patient.some(p => {
-      if(p.id === patientID)
-      {
+      if(p.id === patientID){
           temp = p;
       }
+      return true;
     })
 
     return temp;

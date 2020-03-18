@@ -9,7 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./member/member.module').then( m => m.MemberPageModule)
   },
   {
-    path: 'checkup',
+    path: 'checkup/:id',
     loadChildren: () => import('./checkup/checkup.module').then( m => m.CheckupPageModule)
   },
   {

@@ -13,12 +13,12 @@ export class MemberPage implements OnInit {
   patient: Patient;
 
   constructor(private activatedRoute: ActivatedRoute, private patientService: PatientService) {
-    this.sideMenu();
   }
 
   ngOnInit() {
     this.myId = this.activatedRoute.snapshot.paramMap.get('id');
     this.patient = this.patientService.getPatient(this.myId);
+    this.sideMenu();
   }
 
   sideMenu()
@@ -28,20 +28,23 @@ export class MemberPage implements OnInit {
 
       {
         title : "Check-Up",
-        url   : "/checkup",
+        url   : `/checkup/${this.myId}`,
         icon  : "home"
       },
       {
         title : "Admission",
         url   : "/chat",
+        icon : "add"
       },
       {
         title : "Laboratory",
         url   : "/contacts",
+        icon : "archive"
       },
       {
         title : "Pharmacy",
-        url   : "/medicine",
+        url   : "/analytics",
+        icon : "analytics"
       },
     ]
   }
