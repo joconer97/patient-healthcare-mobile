@@ -1,0 +1,83 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title (click)="dismiss()">Back</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title color="primary">Admission Information</ion-card-title>
+      </ion-card-header>
+    
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-card-content>
+            <h4>Admission Date: {{admission.admittedDate | date}} </h4>
+            <h4>Admission Time: {{admission.admittedTime}} </h4>
+          </ion-card-content>
+        </ion-row>
+
+        <ion-row>
+          <ion-card-content>
+            <h4>Doctor {{admission.doctor.firstname + ' ' + admission.doctor.lastname}} </h4>
+          </ion-card-content>
+        </ion-row>
+    
+        <ion-row>
+          <ion-card-content>
+            <h4>Blood Pressure {{admission.blood_pressure}}</h4>
+            <h4>O2SAT {{admission.o2sat}}</h4>
+            <h4>GCS {{admission.gcs}}</h4>
+            <h4>Pulse Rate {{admission.pulse_rate}}</h4>
+            <h4>Respiratory Rate {{admission.respiratory_rate}}</h4>
+            <h4>Temperature {{admission.temperature}}</h4>
+          </ion-card-content>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title color="primary">Prescription</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list *ngFor="let p of admission.prescriptions">
+          <ion-item>
+            <ion-grid>
+              <ion-row>
+                <h4>{{p.medicine}}</h4>
+              </ion-row>
+              <ion-row >
+                <ion-label>{{p.hrs + "hrs per day"}}</ion-label>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+  </ion-card>
+  
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title color="primary">Progress Procedure</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-list *ngFor="let p of admission.procedures">
+          <ion-item>
+            <ion-grid>
+              <ion-row>
+                <h4>{{p.procedureName}}</h4>
+              </ion-row>
+              <ion-row >
+                <ion-label>{{'#' + p.procedureNo}}</ion-label>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -33,9 +33,7 @@ export class CheckupService {
   
   constructor(db: AngularFireDatabase, private activatedRoute: ActivatedRoute){ 
       db.list('/Checkup').valueChanges().subscribe(res => {
-        res.forEach(r => {
-          this.sample.push(r);
-        })
+        this.sample = res;
       })
   }
 

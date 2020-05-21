@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {AngularFireDatabase} from 'angularfire2/database';
-
+import { ActivatedRoute } from '@angular/router';
 
 
 export interface Medicine {
@@ -22,18 +22,16 @@ export class MedicineService {
 
   medicine: any[] = [];
 
-  constructor(db: AngularFireDatabase) { 
-      db.list('/Medicine').valueChanges().subscribe(res => {
-          res.forEach(r => {
-            this.medicine.push(r);
+  constructor(db: AngularFireDatabase,private activatedRoute: ActivatedRoute) { 
+    db.list('/Medicine').valueChanges().subscribe(res => {
+          res.forEach(m => {
+            this.medicine.push(m);
           })
       })
-
   }
 
   getMedicines()
   {
-    console.log(this.medicine);
     return this.medicine;
   }
 }

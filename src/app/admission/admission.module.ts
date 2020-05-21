@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AdmissionPageRoutingModule } from './admission-routing.module';
 
 import { AdmissionPage } from './admission.page';
-
+import { AdmissionSummaryPage } from '../admission-summary/admission-summary.page';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +15,7 @@ import { AdmissionPage } from './admission.page';
     IonicModule,
     AdmissionPageRoutingModule
   ],
-  declarations: [AdmissionPage]
+  declarations: [AdmissionPage, AdmissionSummaryPage],
+  entryComponents: [AdmissionSummaryPage]
 })
 export class AdmissionPageModule {}

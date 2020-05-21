@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>
+      Bill
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let item of bill">
+    <ion-card  [color]="item.isPaid === 0 ? 'danger' : 'primary'">
+      <ion-card-header>
+        <ion-card-subtitle style="text-align: center;">
+          {{item.name}}
+        </ion-card-subtitle>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col>₱{{item.total}}</ion-col>
+              <ion-col>{{item.date | date}}</ion-col>
+              <ion-col>{{(item.isPaid === 0)?'':'PAID'}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card-header>
+    </ion-card>
+  </ion-list>
+
+  <ion-card color="secondary">
+    <ion-header>
+      <ion-card-title>
+          Total Amount
+      </ion-card-title>
+      <ion-card-content>
+        ₱{{total}}
+      </ion-card-content>
+    </ion-header>
+  </ion-card>
+</ion-content>

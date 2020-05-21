@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PatientService, Patient} from '../Services/patient.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,13 +10,18 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  constructor(private patientService: PatientService, private router: Router,public alertController: AlertController) {}
+  constructor(
+    private patientService: PatientService, 
+    private router: Router,
+    public alertController: AlertController,
+    public storage: Storage) {}
 
   patient: Patient[];
-  currentPatient: Patient;
+  currentPatient;
   patientID: string;
 
   ngOnInit() {
+    this.storage.clear();
   }
 
   async failedLoginAlert(){
@@ -27,18 +33,21 @@ export class HomePage implements OnInit {
     })
 
     await alert.present();
-    let result = await alert.onDidDismiss();
+      let result = await alert.onDidDismiss();
   }
 
   login(){
+    this.storage.clear();
     this.currentPatient = this.patientService.validatePatient(this.patientID);
 
     if(this.currentPatient == null){
       this.failedLoginAlert();
       return;
     }
-    
-    this.router.navigate([`member/${this.currentPatient.id}`]);
+
+    this.patientService.setCurrentPatient(this.currentPatient);
+
+    this.router.navigate(['menu']);
   }
 
 }

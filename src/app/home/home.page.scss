@@ -1,11 +1,12 @@
 #container {
-  text-align: center;
-
+  background-color: #FF4136;
+  width: 300px;
+  height: 300px;
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
+  
 }
 
 #container strong {
@@ -28,4 +29,10 @@
 
 ion-content ion-toolbar {
   --background: translucent;
+}
+ion-content.background{
+    --background: url(../../assets/icon/background.png) no-repeat fixed center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
 }

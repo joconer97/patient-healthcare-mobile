@@ -1,52 +1,55 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {PatientService, Patient} from '../Services/patient.service';
+
+import { Platform } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
+
 @Component({
   selector: 'app-member',
   templateUrl: './member.page.html',
   styleUrls: ['./member.page.scss'],
 })
-export class MemberPage implements OnInit {
-  navigate: any;
-  patientID: string;
-  myId = null;
-  patient: Patient;
-
-  constructor(private activatedRoute: ActivatedRoute, private patientService: PatientService) {
+export class MemberPage implements OnInit  {
+  navigate : any;
+  constructor(private platform    : Platform,
+              private splashScreen: SplashScreen,
+              private statusBar   : StatusBar) 
+  {
+    this.sideMenu();
+    this.initializeApp();
   }
 
   ngOnInit() {
-    this.myId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.patient = this.patientService.getPatient(this.myId);
-    this.sideMenu();
+    
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
   }
 
   sideMenu()
   {
     this.navigate =
     [
-
       {
-        title : "Check-Up",
-        url   : `/checkup/${this.myId}`,
+        title : "Home",
+        url   : "/home",
         icon  : "home"
       },
       {
-        title : "Admission",
+        title : "Chat",
         url   : "/chat",
-        icon : "add"
+        icon  : "chatboxes"
       },
       {
-        title : "Laboratory",
+        title : "Contacts",
         url   : "/contacts",
-        icon : "archive"
-      },
-      {
-        title : "Pharmacy",
-        url   : "/analytics",
-        icon : "analytics"
+        icon  : "contacts"
       },
     ]
   }
-
 }

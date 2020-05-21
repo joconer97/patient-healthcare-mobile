@@ -1,11 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>medicine</ion-title>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>
+      Pharmacy
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let m of medicines">
+  <ion-card *ngFor="let m of medicines" color="primary">
     <ion-item>
       <ion-label>{{m.name}}</ion-label>
     </ion-item>

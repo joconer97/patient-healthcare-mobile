@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import { Observable } from 'rxjs';
-
+import {Storage} from '@ionic/storage';
 
 export interface Patient {
-  id: string;
+  id: string,
+  firstname: string,
+  middlename: string,
+  lastname: string,
 }
 
 
@@ -16,15 +19,16 @@ export interface Patient {
 export class PatientService {
 
   patient:  any[] = [];
+  currentPatient: any;
 
-  constructor(private db: AngularFireDatabase){
+  constructor(private db: AngularFireDatabase,private storage: Storage){
       db.list<Patient>('/Patient').valueChanges().subscribe(res => {
           this.patient = res;
       });
   }
   validatePatient(patientID: string) {
       let temp = null;
-      this.patient.some(p => {
+      this.patient.forEach(p => {
         if(p.id === patientID){
             temp = p;
         }
@@ -45,5 +49,14 @@ export class PatientService {
 
     return temp;
   }
+
+  setCurrentPatient(patient: Patient): Promise<any> {
+    console.log(patient);
+    return this.storage.set('currentPatient', patient);
+  }
+  getCurrentPatient(): Promise<Patient>{
+    return this.storage.get('currentPatient');
+  }
+  
   
 }

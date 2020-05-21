@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { IonicStorageModule } from '@ionic/storage';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -15,7 +15,15 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule, AngularFireDatabaseModule],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
+    AppRoutingModule, 
+    AngularFireModule.initializeApp(environment.firebase), 
+    AngularFirestoreModule, 
+    AngularFireDatabaseModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

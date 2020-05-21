@@ -1,29 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Patient Healthcare Mobile</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content fullscreen>
-      <ion-item>
-        <ion-label position="stacked">Patient Identification No.<ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required type="text"  [(ngModel)]="patientID"></ion-input>
-      </ion-item>
-
-      <div class="ion-padding">
-        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="login()">Login</ion-button>
-      </div>
-
-      <div class="ion-padding">
-        <ion-button expand="block" type="submit" class="ion-no-margin" (click)="sample()">Login as Guest</ion-button>
-      </div>
-  </ion-content>
+<ion-content fullscreen class="background">
+  <div style="margin-top: 50%">
+    <ion-input required type="text"  [(ngModel)]="patientID" style="font-size: large;color: white;margin:0 auto;width:50%" placeholder="Patient Identification"></ion-input>
+  </div>
+  <br><br><br>
+  <div class="ion-padding" style="opacity: 85%;">
+    <ion-button expand="block" type="submit" class="ion-no-margin" (click)="login()">Login</ion-button>
+  </div>
+  <div class="ion-padding" style="opacity: 85%;">
+    <ion-button expand="block" type="submit" class="ion-no-margin" (click)="sample()">Login as Guest</ion-button>
+  </div>
+</ion-content>

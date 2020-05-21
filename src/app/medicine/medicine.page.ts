@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform, ToastController } from '@ionic/angular';
 import {MedicineService,Medicine} from '../Services/medicine.service';
 @Component({
   selector: 'app-medicine',
@@ -7,11 +8,22 @@ import {MedicineService,Medicine} from '../Services/medicine.service';
 })
 export class MedicinePage implements OnInit {
 
-  constructor(private medicineService: MedicineService) { }
   medicines: Medicine[]
 
-  ngOnInit() {
-    this.medicines = this.medicineService.getMedicines();
+  constructor(private medicineService: MedicineService,private plt: Platform) {
+      this.plt.ready().then(() => {
+        this.loadMedicine();
+      });
   }
+
+  ngOnInit() {
+  
+  }
+
+  async loadMedicine() {
+    return this.medicines = this.medicineService.getMedicines();
+  }
+
+  
 
 }

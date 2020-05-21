@@ -1,5 +1,7 @@
 {
   "name": "capstone/phc",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

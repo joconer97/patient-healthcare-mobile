@@ -2,9 +2,16 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+
+.ion-color-newcolor {
+  --ion-color-base: #27ae60;
+  --ion-color-contrast: #56b4d3;
+}
+
 :root {
+  
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #27ae60;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -224,6 +231,6 @@
   }
 
   ion-title.title-large {
-    --color: white;
+    --color: #2980b9;
   }
 }

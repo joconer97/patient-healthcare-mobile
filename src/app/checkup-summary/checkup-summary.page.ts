@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NavParams } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import {Patient} from '../Services/patient.service';
+import {Checkup} from '../Services/checkup.service';
 
 @Component({
   selector: 'app-checkup-summary',
@@ -8,13 +12,25 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CheckupSummaryPage implements OnInit {
 
-  private slug : string;
+  @Input() currentPatient: Patient;
+  @Input() checkup: Checkup;
 
-  constructor(private route : ActivatedRoute) {}
+
+  private slug : string;
+  
+
+  constructor(private route : ActivatedRoute,public modalController: ModalController,navParams: NavParams) {
+  }
 
   ngOnInit() {
-    this.slug = this.route.snapshot.paramMap.get('id');
-    console.log(this.slug);
+  }
+
+  dismiss() {
+    // using the injected ModalController this page
+    // can "dismiss" itself and optionally pass back data
+    this.modalController.dismiss({
+      'dismissed': true
+    });
   }
 
 }
